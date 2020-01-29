@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~    This file is part of "Origami".
+  ~
+  ~     Origami is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Origami is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Origami.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+					        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="color" abstract="true" class="java.awt.Color"/>
+    <bean id="colorcombo" abstract="true" class="com.moduleforge.libraries.geometry._3d.ColorCombination"/>
+    <bean id="point" abstract="true" class="com.moduleforge.libraries.geometry._3d.Point"/>
+    <bean id="figure" abstract="true" class="com.whitebeluga.origami.figure.Figure"/>
+    <bean id="base" abstract="true" class="com.whitebeluga.origami.figure.OrigamiBase"/>
+    <bean id="map" abstract="true" class="java.util.HashMap"/>
+    <bean id="figureData" abstract="true" class="com.moduleforge.origami.webapp.guidata.input.figure.FigureData"/>
+
+    <util:constant id="square" static-field="com.whitebeluga.origami.figure.OrigamiBase.SQUARE" />
+    <util:constant id="bird" static-field="com.whitebeluga.origami.figure.OrigamiBase.BIRD" />
+    <util:constant id="birdBlintz" static-field="com.whitebeluga.origami.figure.OrigamiBase.BIRD_BLINTZ" />
+    <util:constant id="blintz" static-field="com.whitebeluga.origami.figure.OrigamiBase.BLINTZ" />
+    <util:constant id="boat" static-field="com.whitebeluga.origami.figure.OrigamiBase.BOAT" />
+    <util:constant id="diamond" static-field="com.whitebeluga.origami.figure.OrigamiBase.DIAMOND" />
+    <util:constant id="fish" static-field="com.whitebeluga.origami.figure.OrigamiBase.FISH" />
+    <util:constant id="frog" static-field="com.whitebeluga.origami.figure.OrigamiBase.FROG" />
+    <util:constant id="kite" static-field="com.whitebeluga.origami.figure.OrigamiBase.KITE" />
+    <util:constant id="preliminary" static-field="com.whitebeluga.origami.figure.OrigamiBase.PRELIMINARY" />
+    <util:constant id="waterbomb" static-field="com.whitebeluga.origami.figure.OrigamiBase.WATERBOMB" />
+
+	<bean id="paperSideLength" class="java.lang.Double">
+		<constructor-arg index="0" value="2.0"/>
+	</bean>
+
+	<bean id="defaultPaperFrontColor" parent="color">
+		<constructor-arg index="0" type="int" value="250"/>
+		<constructor-arg index="1" type="int" value="250"/>
+		<constructor-arg index="2" type="int" value="250"/>
+	</bean>
+    <bean id="defaultPaperBackColor" parent="color">
+        <constructor-arg index="0" type="int" value="250"/>
+        <constructor-arg index="1" type="int" value="250"/>
+        <constructor-arg index="2" type="int" value="250"/>
+    </bean>
+    <bean id="defaultColorCombination" parent="colorcombo">
+        <constructor-arg index="0" ref="defaultPaperFrontColor" />
+        <constructor-arg index="1" ref="defaultPaperBackColor" />
+    </bean>
+	<bean id="initialFigureCenter" parent="point">
+		<constructor-arg index="0" value="0.0"/>
+		<constructor-arg index="1" value="0.0"/>
+		<constructor-arg index="2" value="0.0"/>
+	</bean>
+	<bean id="cameraPosition" parent="point">
+		<constructor-arg index="0" value="0.0"/>
+		<constructor-arg index="1" value="0.0"/>
+		<constructor-arg index="2" value="-10.0"/>
+	</bean>
+    <bean id="squarePaper" class="com.whitebeluga.origami.figure.Figure" factory-bean="square" factory-method="make">
+        <constructor-arg index="0"  type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+    </bean>
+    <bean id="birdBase"  class="com.whitebeluga.origami.figure.Figure" factory-bean="bird" factory-method="make">
+        <constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+    </bean>
+    <bean id="birdBlintzBase" class="com.whitebeluga.origami.figure.Figure"  factory-bean="birdBlintz" factory-method="make">
+        <constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+    </bean>
+    <bean id="blintzBase" class="com.whitebeluga.origami.figure.Figure" factory-bean="blintz" factory-method="make">
+        <constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+    </bean>
+    <bean id="boatBase" class="com.whitebeluga.origami.figure.Figure" factory-bean="boat" factory-method="make">
+        <constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+    </bean>
+    <bean id="diamondBase" class="com.whitebeluga.origami.figure.Figure" factory-bean="diamond" factory-method="make">
+        <constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+    </bean>
+	<bean id="fishBase" class="com.whitebeluga.origami.figure.Figure" factory-bean="fish" factory-method="make">
+		<constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+	</bean>
+    <bean id="frogBase" class="com.whitebeluga.origami.figure.Figure" factory-bean="frog" factory-method="make">
+        <constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+    </bean>
+	<bean id="kiteBase" class="com.whitebeluga.origami.figure.Figure" factory-bean="kite" factory-method="make">
+		<constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+	</bean>
+    <bean id="preliminaryBase" class="com.whitebeluga.origami.figure.Figure" factory-bean="preliminary" factory-method="make">
+        <constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+    </bean>
+	<bean id="waterbombBase" class="com.whitebeluga.origami.figure.Figure" factory-bean="waterbomb" factory-method="make">
+		<constructor-arg index="0" type="double" ref="paperSideLength"/>
+        <constructor-arg index="1" ref="defaultColorCombination"/>
+        <constructor-arg index="2" ref="initialFigureCenter"/>
+	</bean>
+	<bean id="birdFigureData" parent="figureData">
+		<constructor-arg index="0" ref="birdBase"/>
+	</bean>
+    <bean id="blintzFigureData" parent="figureData">
+        <constructor-arg index="0" ref="blintzBase"/>
+    </bean>
+    <bean id="birdBlintzFigureData" parent="figureData">
+        <constructor-arg index="0" ref="birdBlintzBase"/>
+    </bean>
+    <bean id="boatFigureData" parent="figureData">
+        <constructor-arg index="0" ref="boatBase"/>
+    </bean>
+    <bean id="diamondFigureData" parent="figureData">
+        <constructor-arg index="0" ref="diamondBase"/>
+    </bean>
+    <bean id="fishFigureData" parent="figureData">
+        <constructor-arg index="0" ref="fishBase"/>
+    </bean>
+    <bean id="frogFigureData" parent="figureData">
+        <constructor-arg index="0" ref="frogBase"/>
+    </bean>
+    <bean id="kiteFigureData" parent="figureData">
+        <constructor-arg index="0" ref="kiteBase"/>
+    </bean>
+	<bean id="preliminaryFigureData" parent="figureData">
+		<constructor-arg index="0" ref="preliminaryBase"/>
+	</bean>
+	<bean id="waterbombFigureData" parent="figureData">
+		<constructor-arg index="0" ref="waterbombBase"/>
+	</bean>
+    <bean id="figureDataBaseMap" parent="map">
+        <constructor-arg>
+            <map key-type="com.whitebeluga.origami.figure.OrigamiBase" value-type="com.moduleforge.origami.webapp.guidata.input.figure.FigureData">
+                <entry key="BIRD" value-ref="birdFigureData" />
+                <entry key="BLINTZ" value-ref="blintzFigureData" />
+                <entry key="BIRD_BLINTZ" value-ref="birdBlintzFigureData" />
+                <entry key="BOAT" value-ref="boatFigureData" />
+                <entry key="DIAMOND" value-ref="diamondFigureData" />
+				<entry key="FISH" value-ref="fishFigureData" />
+				<entry key="FROG" value-ref="frogFigureData" />
+				<entry key="KITE" value-ref="kiteFigureData" />
+				<entry key="PRELIMINARY" value-ref="preliminaryFigureData" />
+				<entry key="WATERBOMB" value-ref="waterbombFigureData" />
+            </map>
+        </constructor-arg>
+    </bean>
+    <bean id="baseMap" parent="map">
+        <constructor-arg>
+            <map key-type="com.whitebeluga.origami.figure.OrigamiBase" value-type="com.whitebeluga.origami.figure.Figure">
+                <entry key="BIRD" value-ref="birdBase" />
+                <entry key="BLINTZ" value-ref="blintzBase" />
+                <entry key="BIRD_BLINTZ" value-ref="birdBlintzBase" />
+                <entry key="BOAT" value-ref="boatBase" />
+                <entry key="DIAMOND" value-ref="diamondBase" />
+				<entry key="FISH" value-ref="fishBase" />
+				<entry key="FROG" value-ref="frogBase" />
+				<entry key="KITE" value-ref="kiteBase" />
+				<entry key="PRELIMINARY" value-ref="preliminaryBase" />
+				<entry key="WATERBOMB" value-ref="waterbombBase" />
+            </map>
+        </constructor-arg>
+    </bean>
+	<bean class="org.springframework.web.context.support.ServletContextAttributeExporter">
+		<property name="attributes">
+			<map>
+				<entry key="developmentMode" value="true" />
+			</map>
+		</property>
+	</bean>
+</beans>

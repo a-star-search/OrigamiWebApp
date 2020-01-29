@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "outDir": "tsc",
+    "rootDir": "ts",
+    "sourceMap": true,
+    "declaration": true
+  }
+}
