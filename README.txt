@@ -4,8 +4,9 @@ Web front end for the Origami application.
 About the limitations of babylon js.
 ---
 
-Let's start by saying that babylon js is one the biggest piece of shit libraries I have had the displeasure to use.
-With that out of the way let's delve into the specifics.
+babylon js is simply a terrible library all around and in particular badly suited for representing a figure with the 
+characteristics required. I only discovered that too late. It worked decently for the flat representation of the 
+figure, but not for the three-dimensional one.
 
 A flat representation of a "bundle" cannot be flat in two different ways.
 
@@ -33,12 +34,12 @@ don't believe this is a serious problem, as long as the docking ball is big enou
 It is not a problem for the precision of the point picked, as it will always be docked to the actual segments or
 vertices.
 
-Given the huge piece of shit that babylon is I don't expect that in future implementation two
+Given the trash that babylon is I don't expect that in future implementation two
 faces can occupy the same space with different orientations and the borders of a face not interfere with the opposite
 facing face, which would make the "gap" unnecessary.
 
 2)
-Another big problem stemming from the HUGE PILE OF FUCKING SHIT that babylon js is, is that it's not (in general)
+Another big problem stemming from the trash that babylon js is, is that it's not (in general)
 possible to draw concave polygons with ribbons, which as far as I know, is the only possible way of drawing polygons.
 
 Luckily in origami there are no concave faces, only concave *visible* parts of faces.
@@ -55,9 +56,9 @@ case.
 
 3)
 There are no fucking shadows!!!! There are, in thoery, but it's overly complicated and I never managed.
- I can't believe what a huge piece of shit babylon js is.
+I can't believe what trash babylon is.
 
- It's really a big drawback to how realistic the 3D figure looks.
+It's really a big drawback to how realistic the 3D figure looks.
 
 Fold line dashes
 ---
@@ -78,10 +79,10 @@ Deploy the war to heroku
 ========================
 OrigamiWebApp>heroku war:deploy target\OrigamiWebApp.war --app murmuring-dawn-69778
 
-In order to deploy a war to heroku I had to install a plugin
+In order to deploy the war to heroku, install a plugin
 
 OrigamiWebApp>heroku plugins:install heroku-cli-deploy
 
-otherwise you have to deploy from a git repo (follow this guide http://www.alienfactory.co.uk/articles/using-mercurial-and-git-in-harmony)
+otherwise you have to deploy from a git repo (http://www.alienfactory.co.uk/articles/using-mercurial-and-git-in-harmony)
 
 https://murmuring-dawn-69778.herokuapp.com/
