@@ -27,7 +27,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <origami.version>0.0.2-SNAPSHOT</origami.version>
         <origamifigure.version>0.0.1-SNAPSHOT</origamifigure.version>
-        <log4j.version>2.9.0</log4j.version>
+        <log4j.version>2.13.3</log4j.version>
         <spring.version>4.3.9.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
         <java.version>1.8</java.version>
